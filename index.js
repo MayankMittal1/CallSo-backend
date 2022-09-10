@@ -11,7 +11,9 @@ var io = require("socket.io")(http, {
 app.use(express.static("public"));
 //all connected to the server users
 var users = {};
-
+app.get("/", function (req, res) {
+  res.send("Hello World");
+});
 //when a user connects to our sever
 io.on("connection", function (connection) {
   connection.on("login", (data) => {
