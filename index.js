@@ -34,6 +34,12 @@ io.on("connection", function (connection) {
     connection.to(data.to).emit("accept", data);
   });
 
+  connection.on("leave", (data) => {
+    data = JSON.parse(data);
+    console.log("leaving", data.to);
+    connection.to(data.to).emit("leave", data);
+  });
+
   //when server gets a message from a connected user
 
   connection.on("message", function (message) {
